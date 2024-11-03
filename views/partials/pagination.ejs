@@ -1,0 +1,56 @@
+<!-- Pagination -->
+
+
+<% if (selectedid == null) { %>
+
+    <% if (totalPages > 1) { %>
+    
+        <nav>
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a href="/blogs?page=<%= currentPage == 0 ? currentPage : currentPage-1 %>" class="page-link">Geri</a>
+              </li>
+              
+                <% for( let i = 0; i < totalPages; i++ ) { %>
+                
+                    <li class="page-item">
+                        <a href="/blogs?page=<%= i %>" class="page-link <%= i == currentPage ? "active" : "" %>"><%= i + 1 %></a>
+                    </li>
+    
+                <% } %>
+    
+              <li class="page-item">
+                <a href="/blogs?page=<%= currentPage == totalPages - 1 ? currentPage : currentPage + 1 %>" class="page-link">ileri</a>
+              </li>
+            </ul>
+          </nav>
+    
+    <% } %>
+ 
+<% } else { %>
+     
+    <% if (totalPages > 1) { %>
+    
+        <nav>
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a href="?page=<%= currentPage == 0 ? currentPage : currentPage-1 %>" class="page-link">Geri</a>
+              </li>
+              
+                <% for( let i = 0; i < totalPages; i++ ) { %>
+                
+                    <li class="page-item">
+                        <a href="?page=<%= i %>" class="page-link <%= i == currentPage ? "active" : "" %>"><%= i + 1 %></a>
+                    </li>
+    
+                <% } %>
+    
+              <li class="page-item">
+                <a href="?page=<%= currentPage == totalPages - 1 ? currentPage : currentPage + 1 %>" class="page-link">ileri</a>
+              </li>
+            </ul>
+          </nav>
+    
+    <% } %>
+
+<% } %>

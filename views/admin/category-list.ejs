@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head.ejs', title) %>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <%- include('../partials/nav.ejs') %>
+
+    <!-- Content -->
+    <div class="container mt-3">
+      <h1 class="h3 mb-3"><%= title %></h1>
+
+      <% if (action != "undefined" && action == "create") { %>
+        <div class="alert alert-success" role="alert">
+          "<%= categoryname %>" isimli kategori oluşturuldu...
+        </div>
+      <% } %>
+      
+      <% if (action != "undefined" && action == "delete") { %>
+        <div class="alert alert-danger" role="alert">
+          "<%= categoryname %>" isimli kategori silindi...
+        </div>
+      <% } %>
+
+      <% if (action != "undefined" && action == "edit") { %>
+        <div class="alert alert-warning" role="alert">
+          "<%= categoryname %>" isimli kategori güncellendi...
+        </div>
+      <% } %>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="bg-body-secondary" style="width: 3rem;" scope="col">#</th>
+            <th class="bg-body-secondary" scope="col">
+              Kategori Adı
+            </th>
+            <th class="bg-body-secondary" style="width: 9rem;" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <form action="">
+            <!-- csrfToken -->
+         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <% categories.forEach((category, i) => { %>
+
+            <tr>
+              <th scope="row"><%= i + 1 %></th>
+              <td><%= category.name %></td>
+              <td>
+                <a href="/admin/categories/<%= category._id %>" class="btn btn-sm btn-primary mt-3">Düzenle</a>
+                <a href="/admin/category/delete/<%= category._id %>" class="btn btn-sm btn-danger mt-3">Sil</a>
+              </td>
+            </tr>
+
+            <% }) %>
+          </form>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bootstrap scriptleri -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

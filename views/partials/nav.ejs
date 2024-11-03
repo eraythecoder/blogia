@@ -1,0 +1,66 @@
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+  <div class="container">
+
+    <a class="navbar-brand" href="/">
+      <i class="fa-solid fa-blog"></i>&nbsp;Blogia
+    </a>
+
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <% if (isAuth) { %>
+          <li class="nav-item">
+            <a href="/blogs" class="nav-link">Bloglar</a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/blog/create" class="nav-link">Blog Oluştur</a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/blogs" class="nav-link">Blog Düzenle</a>
+          </li>
+
+          <% if (isAdmin) { %>
+            <li class="nav-item">
+              <a href="/admin/category/create" class="nav-link">Kategori Oluştur</a>
+            </li>
+            <li class="nav-item">
+              <a href="/admin/categories" class="nav-link">Kategori Düzenle</a>
+            </li>
+          <% } %>
+        <% } %>
+      </ul>
+
+
+      <ul class="navbar-nav ms-auto">
+        <% if (isAuth) { %>
+          <li class="nav-item">
+            <a href="#" class="nav-link disabled text-white"><%= fullname %></a>
+          </li>
+          <li class="nav-item">
+            <a href="/auth/logout" class="nav-link">Çıkış Yap</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a href="/auth/login" class="nav-link">Giriş Yap</a>
+          </li>
+          <li class="nav-item">
+            <a href="/auth/register" class="nav-link">Kaydol</a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

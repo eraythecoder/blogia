@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head.ejs', title) %>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <%- include('../partials/nav.ejs') %>
+
+    <!-- Content -->
+    <div class="container-md mt-4">
+      <h1 class="h3 mb-3"><%= title %></h1>
+
+      <% if (typeof message != "undefined") { %>
+        <div class="alert alert-<%= message.class %>"><%= message.text %></div>
+      <% } %>
+
+      <form method="POST">
+        <!-- csrfToken -->
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <!-- Fullname -->
+        <div class="mb-3">
+          <label for="name" class="form-label">İsim Soyisim</label>
+          <input name="name" id="name" class="form-control" type="text" />
+        </div>
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input name="email" id="email" class="form-control" type="email" />
+        </div>
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Şifre</label>
+          <input
+            name="password"
+            id="password"
+            class="form-control"
+            type="password"
+          />
+        </div>
+        <!-- POST -->
+        <div class="row">
+          <div class="col-11 d-flex justify-content-center">
+            <button
+              type="submit"
+              class="btn btn-primary btn-lg d-flex justify-self-center"
+            >
+              Kaydet
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Bootstrap scriptleri -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
